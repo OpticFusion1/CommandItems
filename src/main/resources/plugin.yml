@@ -1,0 +1,6 @@
+name: CommandItems
+description: Allows you to assign commands to items
+version: ${project.version}
+author: Optic_Fusion1
+main: optic_fusion1.commanditems.CommandItems
+api-version: 1.19
