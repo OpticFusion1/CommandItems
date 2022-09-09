@@ -4,3 +4,7 @@ version: ${project.version}
 author: Optic_Fusion1
 main: optic_fusion1.commanditems.CommandItems
 api-version: 1.19
+commands:
+    commanditem:
+        description: Allows you to assign and unassign commands from items
+        usage: /commanditem <assign <comand>|unassign>
