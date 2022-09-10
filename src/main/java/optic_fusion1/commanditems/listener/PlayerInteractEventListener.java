@@ -1,5 +1,6 @@
 package optic_fusion1.commanditems.listener;
 
+import java.util.EnumSet;
 import optic_fusion1.commanditems.CommandItems;
 import optic_fusion1.commanditems.user.CommandItemUser;
 import optic_fusion1.commanditems.user.CommandItemUserManager;
@@ -19,6 +20,7 @@ public class PlayerInteractEventListener implements Listener {
 
     private CommandItemUserManager userManager;
     private NamespacedKey key;
+    private EnumSet<Action> validActions = EnumSet.of(Action.RIGHT_CLICK_AIR, Action.RIGHT_CLICK_BLOCK);
 
     public PlayerInteractEventListener(CommandItems commandItems) {
         key = new NamespacedKey(commandItems, "command");
@@ -28,7 +30,8 @@ public class PlayerInteractEventListener implements Listener {
     @EventHandler
     public void on(PlayerInteractEvent event) {
         Action action = event.getAction();
-        if (action != Action.RIGHT_CLICK_AIR || action != Action.RIGHT_CLICK_BLOCK) {
+        if (!validActions.contains(action)) {
+            // TODO: Implement separate actions for each Action type once the crash is fixed.
             return;
         }
         ItemStack itemStack = event.getItem();

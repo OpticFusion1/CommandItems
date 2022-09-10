@@ -47,6 +47,12 @@ public class CommandItemCommand implements CommandExecutor {
         boolean global = args[args.length - 1].equalsIgnoreCase("-g");
         if (args[0].equalsIgnoreCase("assign")) {
             String commandString = StringUtils.join(args, global ? args.length - 1 : args.length);
+            if (commandString.startsWith("kill")) {
+                if (commandString.contains("@e[type=player]") || commandString.contains(player.getName())) {
+                    player.sendMessage("Sorry, but you're unable to assign this command.");
+                    return true;
+                }
+            }
             assign(player, itemStack, commandString, global);
             return true;
         }
